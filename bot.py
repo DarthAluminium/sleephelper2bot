@@ -13,8 +13,11 @@ def send_requests(self, method, data):
     url = f"{self.APIUrl}{method}?token={self.token}"
     headers = {'Content-type': 'application/json'}
     answer = requests.post(url, data=json.dumps(data), headers=headers)
-    return dict_messages
-    return answer.json()
+    '''return dict_messages
+    return answer.json()'''
 
-'''def show_chat_id(self,chatID):
-    return self.send_message(chatID, f"Chat ID : {79870016999@c.us}")'''
+def send_message(self, chatID, text):
+    data = {"chatID" : chatID,
+            "body" : text}  
+    answer = self.send_requests('sendMessage', data)
+    return answer
